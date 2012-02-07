@@ -63,11 +63,31 @@ Ext.setup({
             ]
         });
 
-        // Add the tiled dataview to the viewport and give it the store
-        Ext.Viewport.add({
-            xclass: 'Barebones.examples.TiledDataView',
-            store: store
-        });
+
+        Ext.Viewport.add([
+            // Add a toolbar with a button which links to the source
+            {
+                xtype: 'titlebar',
+                docked: 'top',
+                ui: 'light',
+                title: 'Tiled DataView',
+                items: [
+                    {
+                        text: 'Source',
+                        align: 'right',
+                        handler: function() {
+                            window.location = "https://github.com/rdougan/barebones-tited-dataview";
+                        }
+                    }
+                ]
+            },
+
+            // Add the tiled dataview to the viewport and give it the store
+            {
+                xclass: 'Barebones.examples.TiledDataView',
+                store: store
+            }
+        ]);
     }
 });
 
