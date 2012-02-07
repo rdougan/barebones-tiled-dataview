@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Sencha Touch 2 - Barebones Tiled DataView Example</title>
+
+        <!-- Sencha Touch -->
+        <link rel="stylesheet" href="http://dev.sencha.com/deploy/sencha-touch-2-b1/resources/css/sencha-touch.css">
+        <script src="http://dev.sencha.com/deploy/sencha-touch-2-b1/builds/sencha-touch-all.js" type="text/javascript"></script>
+
+        <!-- Custom Styling for the TiledDataView -->
+        <style type="text/css" media="screen">
+
+            /* Target the custom baseCls we specified below. */
+            .rd-tiled-view {
+                padding: 0 10px 10px 0;
+                text-align: center;
+            }
+
+            /* Target the tiled view item. Make it float using inline-block. */
+            .rd-tiled-view-item {
+                background: #eee;
+                width: 150px;
+                height: 150px;
+                display: inline-block;
+                margin: 10px 0 0 10px;
+            }
+
+        </style>
+
+        <script type="text/javascript">
+
+// Define our custom TitleDataView component
+Ext.define('Barebones.examples.TiledDataView', {
+    // Extend dataview
+    extend: 'Ext.dataview.DataView',
+
+    config: {
+        // Give it a custom baseCls so we can target this view and its items
+        baseCls: 'rd-tiled-view',
+
+        // Give it a simple itemTpl which displays the field name within the item
+        itemTpl: '{name}'
+    }
+});
+
+Ext.setup({
+    onReady: function() {
+        // Create the store and give it some fake data for our tiled dataview
+        var store = Ext.create('Ext.data.Store', {
+            fields: ['name'],
+            data: [
+                { name: 'one' },
+                { name: 'two' },
+                { name: 'three' },
+                { name: 'four' },
+                { name: 'five' },
+                { name: 'six' },
+                { name: 'seven' },
+                { name: 'eight' },
+                { name: 'nine' },
+                { name: 'ten' }
+            ]
+        });
+
+        // Add the tiled dataview to the viewport and give it the store
+        Ext.Viewport.add({
+            xclass: 'Barebones.examples.TiledDataView',
+            store: store
+        });
+    }
+});
+
+        </script>
+    </head>
+
+    <body></body>
+</html>
